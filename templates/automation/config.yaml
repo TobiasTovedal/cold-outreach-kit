@@ -1,0 +1,66 @@
+# Cold Outreach Kit settings. Written by the guided setup (SETUP.md).
+# Edit by hand any time; the scheduled runs read this file every time.
+
+owner:
+  name: ""                 # e.g. Jane Doe
+  first_name: ""           # used in emails, e.g. Jane
+  sender_email: ""         # Gmail send-as address every draft must come from
+  timezone: "Europe/London"
+  call_hours: "09:00-16:00"   # window for proposed call times, in owner's time zone
+  log_language: "English"     # language of logs, summaries and notifications
+
+company:
+  name: ""
+  website: ""
+  product: ""              # one plain sentence: what it does, for whom
+
+paths:                     # relative to the workspace folder
+  automation: "automation"
+  accounts: "crm/accounts"     # one Markdown note per account
+  logs: "crm/logs"             # Followup.md, Leadlog.md, CRM-log.md
+  obsidian_links: true         # write [[Account]] links in logs
+
+gmail:
+  label_prefix: "Outreach"
+  labels:                  # label ids, filled by setup (list_labels)
+    cold: ""
+    followup1: ""
+    followup2: ""
+    replied: ""
+    no_response: ""
+
+email:
+  default_language: "English"
+  language_by_market: {}       # e.g. {se: Swedish, de: German}
+  greeting: "Dear <First name>"  # or "Dear Dr./Mr./Ms. <Surname>"
+  default_subject: ""
+  follow_ups: 1                # 0, 1 or 2
+  fu1_after_working_days: 6
+  fu2_after_working_days: 8    # after FU1, only if follow_ups is 2
+  close_after_working_days: 10 # after the last follow-up, mark no_response
+  propose_call_times: true     # FU1 proposes 2-3 slots
+  calendar_connected: false    # true: read free slots from Google Calendar
+
+experiment:
+  active: "E1"
+  description: "Arm B adds a last line asking who the right person is."
+
+limits:
+  leads_per_run: 20
+  max_pending_cold: 50
+  max_pending_inbox: 50
+  recycle_months: 6            # when a closed lead may be contacted again
+
+crm:
+  enabled: true
+  stages:
+    0: "No contact yet"
+    10: "Interested / replied positively"
+    30: "Meeting held"
+    60: "Proposal sent"
+    90: "Negotiation"
+  # The automation only ever moves stage 0 -> 10. Everything else is yours.
+
+schedule:                      # documentation only; the tasks hold the real times
+  daily_runs: ["08:40", "12:40"]
+  crm_sweep: "Mon 09:00"

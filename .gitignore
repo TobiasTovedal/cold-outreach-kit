@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+*.pyc
+# Your own workspace data never belongs in the kit repo
+/automation/
+/crm/
